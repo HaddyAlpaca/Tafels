@@ -1,0 +1,29 @@
+<div class="table-container">
+  <div class="table-selection">
+    <h2>Kies een tafel:</h2>
+    <p>
+      @for (n of tables; track n) {
+        <button id="table-btn-{{ n }}" (click)="selectTable(n)" [class.selected]="table() === n">{{ n }}</button>
+      }
+    </p>
+    @if (table() !== 99) {
+      <p>
+        <input id="ordered-check" type="checkbox" [checked]="ordered()" (click)="toggleOrdered()" />
+        <label>Op volgorde</label>
+      </p>
+    }
+    <p>
+      <button (click)="selectTable(99)" id="all-btn" class="all-tables" [class.selected]="table() === 99">Alle tafels door elkaar</button>
+    </p>
+  </div>
+  <div class="question-container">
+    <span class="question">Wat is {{ question().multiplier }} x {{ question().table }}?</span>
+    <input id="answer-input" type="number" [(ngModel)]="answer" (keyup.enter)="checkAnswer()" [disabled]="!!feedback()" autofocus />
+    <button id="check-btn" (click)="checkAnswer()" [disabled]="!!feedback()">Controleer</button>
+  </div>
+  @if (feedback()) {
+    <div class="feedback">{{ feedback() }}</div>
+  }
+  <div class="score">Score: {{ score() }} / {{ total() }}</div>
+  <button id="reset-btn" (click)="reset()" [disabled]="!!feedback()">Reset</button>
+</div>

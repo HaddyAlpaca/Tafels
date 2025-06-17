@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { TafelsOefenenComponent } from './tafels-oefenen.component';
-import { FormsModule } from '@angular/forms';
+import { MultiplicationTablesComponent } from './multiplication-tables.component';
 
 @Component({
   selector: 'app-root',
-  imports: [TafelsOefenenComponent, FormsModule],
+  imports: [MultiplicationTablesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
