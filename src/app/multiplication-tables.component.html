@@ -18,7 +18,7 @@
   </div>
   <div class="question-container">
     <span class="question">Wat is {{ question().multiplier }} x {{ question().table }}?</span>
-    <input id="answer-input" type="number" [(ngModel)]="answer" (keyup.enter)="checkAnswer()" [disabled]="!!feedback()" autofocus />
+    <input id="answer-input" #answerInput type="number" [(ngModel)]="answer" (keyup.enter)="checkAnswer()" [disabled]="!!feedback()" autofocus />
     <button id="check-btn" (click)="checkAnswer()" [disabled]="!!feedback()">Controleer</button>
   </div>
   @if (feedback()) {
