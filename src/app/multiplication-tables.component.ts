@@ -1,4 +1,4 @@
-import { Component, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, signal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import confetti from 'canvas-confetti';
 
@@ -10,7 +10,7 @@ import confetti from 'canvas-confetti';
 })
 export class MultiplicationTablesComponent {
   private _counter = 0;
-  private _inputElement = viewChild<HTMLInputElement>('#answer-input');
+  private _inputElement = viewChild<ElementRef<HTMLInputElement>>('answerInput');
 
   protected readonly table = signal(1);
   protected readonly answer = signal('');
@@ -74,7 +74,7 @@ export class MultiplicationTablesComponent {
 
   private setFocusOnInput(): void {
     setTimeout(() => {
-      this._inputElement()?.focus();
+      this._inputElement()?.nativeElement.focus();
     });
   }
 
